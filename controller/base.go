@@ -12,24 +12,24 @@ type BaseController struct {
 }
 
 var (
-	validate *validator.Validate
-	userList UserList
+	validate       *validator.Validate
+	annualUserList AnnualUserList
 )
 
-type UserList struct {
+type AnnualUserList struct {
 	userList []string
 	sync.Mutex
 	len int
 }
 
-func (u *UserList) Append(name string) {
+func (u *AnnualUserList) Append(name string) {
 	u.Lock()
 	defer u.Unlock()
 	u.userList = append(u.userList, name)
 	u.len = u.len + 1
 }
 
-func (u *UserList) Remove(index int) bool {
+func (u *AnnualUserList) Remove(index int) bool {
 	u.Lock()
 	defer u.Unlock()
 	if u.len == 0 {
@@ -46,11 +46,11 @@ func (u *UserList) Remove(index int) bool {
 	return true
 }
 
-func (u *UserList) IsEmpty() bool {
+func (u *AnnualUserList) IsEmpty() bool {
 	return u.len == 0
 }
 
-func (u *UserList) GetValue(index int) string {
+func (u *AnnualUserList) GetValue(index int) string {
 	return u.userList[index]
 }
 

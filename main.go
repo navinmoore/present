@@ -21,5 +21,5 @@ func newApp() *iris.Application {
 
 func main() {
 	app := newApp()
-	app.Run(iris.Addr(":8080"))
+	_ = app.Run(iris.Addr(":8080"))
 }
