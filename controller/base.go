@@ -65,4 +65,6 @@ func init() {
 	// 	}
 	// 	return true
 	// })
+	//准备wechatshake 数据
+	initGift()
 }

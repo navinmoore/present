@@ -48,7 +48,7 @@ func LoggerHandler(ctx iris.Context) {
 	fields["user_agent"] = ctx.Request().UserAgent()
 
 	// 如果是POST/PUT请求，并且内容类型为JSON，则读取内容体
-	if method == http.MethodPost || method == http.MethodPut || method == http.MethodPatch {
+	if method == http.MethodPost || method == http.MethodPut || method == http.MethodPatch || method == http.MethodGet {
 		body, err := ioutil.ReadAll(ctx.Request().Body)
 		if err == nil {
 			//这有意思，为什么要close Body

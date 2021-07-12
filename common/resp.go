@@ -12,9 +12,18 @@ const (
 
 	UserLstEmptyErrorCode int    = 40002
 	UserLstEmptyErrorMsg  string = "人员列表不能为空"
+
+	WeiboRedPackageNotExistCode int    = 40003
+	WeiboRedPackageNotExistMsg  string = "该红包不存在"
+	WeiboRedPackageEmptyCode    int    = 40004
+	WeiboRedPackageEmptyMsg     string = "该红包已经抢完"
 	// 系统错误
 	SystemErrorCode int    = 50000
 	SystemErrorMsg  string = "系统错误，请联系管理员"
+)
+
+const (
+	TaskNum = 2
 )
 
 type Result struct {

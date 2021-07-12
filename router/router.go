@@ -13,4 +13,22 @@ func InitRouter(app *iris.Application) {
 		// m.Router.Use(middleware.JwtHandler().Serve)
 		m.Handle(controller.NewAnnualUserController())
 	})
+	//NewTickController
+	mvc.Configure(app.Party(bathPathV1+"/ticket"), func(m *mvc.Application) {
+		m.Handle(controller.NewTickController())
+	})
+
+	//wechat
+	mvc.Configure(app.Party(bathPathV1+"/wechat"), func(m *mvc.Application) {
+		m.Handle(controller.NewWechatShakeController())
+	})
+
+	// weibo
+	mvc.Configure(app.Party(bathPathV1+"/weibo"), func(m *mvc.Application) {
+		m.Handle(controller.NewWeiboRedPackageController())
+	})
+	//wheel
+	mvc.Configure(app.Party(bathPathV1+"/wheel"), func(m *mvc.Application) {
+		m.Handle(controller.NewWheelController())
+	})
 }

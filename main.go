@@ -1,6 +1,7 @@
 package main
 
 import (
+	"present/controller"
 	"present/router"
 
 	"present/middleware"
@@ -15,7 +16,22 @@ func newApp() *iris.Application {
 
 	app.Use(middleware.LoggerHandler)
 
+	//for i:=0; i<common.TaskNum; i++{
+	//	go func(chan controller.Task){
+	//		controller.FetchRedPackage(controller.ChTaskList[i])
+	//	}(controller.ChTaskList[i])
+	//	fmt.Println(i)
+	//}
+
+	//fmt.Println(controller.ChTaskList)
+	for _, v := range controller.ChTaskList {
+		go func() {
+			controller.FetchRedPackage(v)
+		}()
+	}
+
 	router.InitRouter(app)
+
 	return app
 }
 
